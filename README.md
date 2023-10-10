@@ -2,6 +2,9 @@
 The objective of this project is for us to get to know you better in terms of working together and communicating, as well as it will give us a glimpse of your skillset in building and testing applications. Please read the entire document before you start.
 
 ## Instructions:
+1. Before beginning the project, please send an email to the thread indicating when you plan to start and when you estimate to complete the 16 hours. You are free to review the challenge as long as you want before starting.
+2. After completing 8 hours of work, please push any changes to the code to the repository and send another email to the thread to let us know that you have finished the first 8 hours. Please note that during the first 8 hours, a lot of planning and figuring out the approach may occur and there may not be much code to show, but we would like to get a quick update on your progress.
+3. Upon completion of the 16 hours, please push the final changes to the repository and send another email to the thread to let us know that you have finished the project. In the email, please include any comments or feedback you may have for us and summarize what is missing (if anything) and what you would have worked on next if you had more time.
 
 
 ## Project Details
@@ -36,7 +39,7 @@ Good luck! If you have any questions, feel free to reach out to my email on the 
 <img src="./imgs/companies-list-page.png" />
 
 
-Description: Total counts at the top are counts of the companies (active, in-active, and total). Then list out the companies displaying their name, a count of how many users they have, and their status. Each company should have a link "View Details" that links to their details page (below)
+> Description: Total counts at the top are counts of the companies (active, in-active, and total). Then list out the companies displaying their name, a count of how many users they have, and their status. Each company should have a link "View Details" that links to their details page (below)
 
 
 ### Page 2: Company Details
