@@ -1,4 +1,4 @@
-import { IUserDTO } from "../interface/IUserDTO";
+import { IUserDTO } from '../interface/IUserDTO';
 
 export class UserDataMapper {
   /**
@@ -16,6 +16,7 @@ export class UserDataMapper {
       id: docObject._id,
       firstName: docObject.firstName,
       lastName: docObject.lastName,
+      email: docObject.email,
     };
   }
 }
