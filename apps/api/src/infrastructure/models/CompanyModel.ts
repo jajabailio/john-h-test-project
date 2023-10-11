@@ -1,5 +1,11 @@
 import mongoose from 'mongoose';
 
+const User = {
+  userId: String,
+  fullName: String,
+  email: String,
+};
+
 const CompanySchema = new mongoose.Schema({
   id: String,
   name: String,

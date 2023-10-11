@@ -1,6 +1,9 @@
+import { IUserDTO } from './IUserDTO';
+
 export interface ICompanyDTO {
-  id: string;
+  _id: string;
   name: string;
   address: string;
-  userId: [string];
+  userId: string[];
+  users: IUserDTO[];
 }

@@ -13,7 +13,8 @@ export class UserDataMapper {
     const docObject = doc.toObject ? doc.toObject() : doc;
 
     return {
-      id: docObject._id,
+      _id: docObject._id,
+      userId: docObject.userId,
       fullName: docObject.fullName,
       email: docObject.email,
     };

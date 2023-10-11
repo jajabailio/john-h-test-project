@@ -13,10 +13,11 @@ export class CompanyDataMapper {
     const docObject = doc.toObject ? doc.toObject() : doc;
 
     return {
-      id: docObject._id,
+      _id: docObject._id,
       name: docObject.name,
       address: docObject.address,
       userId: docObject.userId,
+      users: docObject.users,
     };
   }
 }

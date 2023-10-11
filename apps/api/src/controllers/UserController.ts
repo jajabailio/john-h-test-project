@@ -2,6 +2,7 @@ import {
   Request as ExpressRequest,
   Response as ExpressResponse,
 } from 'express';
+import uuid = require('uuid');
 import { UserModel } from '../infrastructure/models/UserModel';
 import { UserDataMapper } from '../infrastructure/mappers/UserDataMapper';
 
@@ -27,6 +28,8 @@ export class UserController {
 
   public async postUser(req: ExpressRequest, res: ExpressResponse) {
     try {
+      const uuidv4: string = uuid.v4();
+      const userId: string = uuidv4;
       const { email, fullName } = req.body;
 
       await UserModel.updateOne(
@@ -36,6 +39,7 @@ export class UserController {
         [
           {
             $set: {
+              userId,
               fullName,
             },
           },
