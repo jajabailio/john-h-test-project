@@ -1,14 +1,31 @@
-import express from 'express';
+import dotenv from 'dotenv';
+import express, { Application } from 'express';
+import cors from 'cors';
+import { UserController } from './controllers/UserController';
+import { UserDataMapper } from './infrastructure/mappers/UserDataMapper';
+import { UserRoutes } from './routes/UserRoutes';
+import { connectToDatabase } from './infrastructure/config/db';
+const userMapper = new UserDataMapper();
+const userController = new UserController(userMapper);
+const userRoutes = new UserRoutes(userController);
+dotenv.config();
 
-const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+export const createApp = (userRoutes: UserRoutes): Application => {
+  const app = express();
+  const port = process.env.PORT || 3000;
 
-const app = express();
+  app.use(cors());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+  app.use('/api/users', userRoutes.getRoutes());
 
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
-});
+  const connectionString = process.env.MONGODB_CONNECTION_STRING;
+  connectToDatabase(connectionString || '');
 
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
-});
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+  });
+  return app;
+};
+
+createApp(userRoutes);
