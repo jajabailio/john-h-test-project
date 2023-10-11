@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { UserController } from "../controllers/UserController";
+import { Router } from 'express';
+import { UserController } from '../controllers/UserController';
 
 export class UserRoutes {
   private router: Router;
@@ -16,6 +16,13 @@ export class UserRoutes {
   }
 
   private initializeRoutes() {
-    this.router.get("/", this.userController.getUsers.bind(this.userController));
+    this.router.get(
+      '/',
+      this.userController.getUsers.bind(this.userController)
+    );
+    this.router.post(
+      '/',
+      this.userController.postUser.bind(this.userController)
+    );
   }
 }
