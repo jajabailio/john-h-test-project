@@ -14,8 +14,7 @@ export class UserDataMapper {
 
     return {
       id: docObject._id,
-      firstName: docObject.firstName,
-      lastName: docObject.lastName,
+      fullName: docObject.fullName,
       email: docObject.email,
     };
   }

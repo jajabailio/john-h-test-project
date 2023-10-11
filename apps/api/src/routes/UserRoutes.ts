@@ -24,5 +24,9 @@ export class UserRoutes {
       '/',
       this.userController.postUser.bind(this.userController)
     );
+    this.router.delete(
+      '/:id',
+      this.userController.deleteUser.bind(this.userController)
+    );
   }
 }
