@@ -458,6 +458,12 @@ h1 {
   border: none;
   padding: 0.55rem;
   cursor: pointer;
+  border-radius: 20px;
+}
+
+.item-input-button {
+  display: flex;
+  flex-direction: column;
 }
 
 .List {
