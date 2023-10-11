@@ -27,16 +27,17 @@ export class CompanyController {
 
   public async postCompany(req: ExpressRequest, res: ExpressResponse) {
     try {
-      const { email, fullName } = req.body;
+      const { name, address, userId } = req.body;
 
       await CompanyModel.updateOne(
         {
-          email,
+          name,
         },
         [
           {
             $set: {
-              fullName,
+              address,
+              userId,
             },
           },
         ],

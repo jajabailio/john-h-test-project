@@ -16,7 +16,7 @@ export class CompanyDataMapper {
       id: docObject._id,
       name: docObject.name,
       address: docObject.address,
-      owner: docObject.owner,
+      userId: docObject.userId,
     };
   }
 }
