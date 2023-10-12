@@ -8,14 +8,12 @@ interface ParentComponentProps {
   item: UserType;
   deleteItem: (id: string) => void;
   editItem: (item: UserType) => void;
-  toggleComplete: (id: string) => void;
 }
 
 export const ListUser: React.FC<ParentComponentProps> = ({
   item,
   deleteItem,
   editItem,
-  toggleComplete,
 }) => {
   const handleEditItem = (item: UserType) => {
     editItem(item);
@@ -23,12 +21,7 @@ export const ListUser: React.FC<ParentComponentProps> = ({
 
   return (
     <div className="List">
-      <p
-        className={`${item.completed ? 'completed' : 'incompleted'}`}
-        onClick={() => toggleComplete(item.id)}
-      >
-        {item.fullName}
-      </p>
+      <p>{item.fullName}</p>
       <div>
         <FontAwesomeIcon
           className="edit-icon"
@@ -38,7 +31,7 @@ export const ListUser: React.FC<ParentComponentProps> = ({
         <FontAwesomeIcon
           className="delete-icon"
           icon={faTrash}
-          onClick={() => deleteItem(item.id)}
+          onClick={() => deleteItem(item.userId)}
         />
       </div>
     </div>
