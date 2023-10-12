@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { UserType } from '.';
-import { postUser } from 'apps/web/app/api/route';
-import { initialItem } from '.'; //ToDo move to shared library
+import { postUser } from 'apps/web/app/api/userRoute';
+import { initialUser } from '.'; //ToDo move to shared library
 
 interface ParentComponentProps {
   handleReturn: (items: UserType[]) => void;
@@ -24,7 +24,7 @@ export const EditUser: React.FC<ParentComponentProps> = ({
     if (formData) {
       const { data } = await postUser(formData.fullName, formData.email);
       handleReturn(data);
-      setFormData(initialItem);
+      setFormData(initialUser);
     }
   };
 
