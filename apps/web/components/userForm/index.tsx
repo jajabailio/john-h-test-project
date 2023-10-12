@@ -3,28 +3,26 @@ import React, { useState, useEffect } from 'react';
 import { ListUser } from './list';
 import { AddUser } from './add';
 import { EditUser } from './edit';
-import { getUsers, deleteUser } from 'apps/web/app/api/route';
+import { getUsers, deleteUser } from 'apps/web/app/api/userRoute';
 
 //ToDo move to shared library
 export interface UserType {
-  id: string;
+  _id: string;
+  userId: string;
   email: string;
   fullName: string;
-  completed: boolean;
-  isEditing: boolean;
 }
 
-export const initialItem: UserType = {
-  id: '',
+export const initialUser: UserType = {
+  _id: '',
+  userId: '',
   email: '',
   fullName: '',
-  completed: false,
-  isEditing: false,
 };
 
 export const UserForm = () => {
   const [items, setItems] = useState<UserType[]>([]);
-  const [selectedItem, setSelectedItem] = useState<UserType>(initialItem);
+  const [selectedItem, setSelectedItem] = useState<UserType>(initialUser);
 
   const fetchUsers = async () => {
     const { data } = await getUsers();
@@ -32,16 +30,8 @@ export const UserForm = () => {
   };
 
   const deleteItem = async (id: string) => {
-    setItems(items.filter((item) => item.id !== id));
+    setItems(items.filter((item) => item._id !== id));
     await deleteUser(id);
-  };
-
-  const toggleComplete = (id: string) => {
-    setItems(
-      items.map((item) =>
-        item.id === id ? { ...item, completed: !item.completed } : item
-      )
-    );
   };
 
   const editItem = (item: UserType) => {
@@ -50,7 +40,7 @@ export const UserForm = () => {
 
   const handleReturn = (items: UserType[]) => {
     setItems(items);
-    setSelectedItem(initialItem);
+    setSelectedItem(initialUser);
   };
 
   useEffect(() => {
@@ -60,7 +50,7 @@ export const UserForm = () => {
   return (
     <div className="ItemWrapper">
       <h1>Users List</h1>
-      {selectedItem.id === '' ? (
+      {selectedItem.userId === '' ? (
         <AddUser handleReturn={handleReturn} />
       ) : (
         <EditUser handleReturn={handleReturn} selectedItem={selectedItem} />
@@ -68,11 +58,10 @@ export const UserForm = () => {
 
       {items.map((item: UserType) => (
         <ListUser
-          key={item.id}
+          key={item._id}
           item={item}
           deleteItem={deleteItem}
           editItem={editItem}
-          toggleComplete={toggleComplete}
         />
       ))}
     </div>

@@ -1,0 +1,23 @@
+FROM node:16 as build
+
+WORKDIR /usr/src/app
+
+USER root
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+COPY . .
+
+RUN npm install -g nx
+
+RUN npm install --force
+
+RUN nx build web
+
+FROM nginx:1.19-alpine
+
+COPY --from=build /usr/src/app/dist/apps/web /usr/share/nginx/html
+
+EXPOSE 4200
+
+CMD ["npm", "start"]
