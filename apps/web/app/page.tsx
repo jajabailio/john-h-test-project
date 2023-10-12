@@ -1,10 +1,10 @@
 import styles from './page.module.css';
-import { UserForm } from '../components/userForm';
+import { CompanyForm } from '../components/companyForm';
 
 export default async function Index() {
   return (
     <div className={styles.page}>
-      <UserForm />
+      <CompanyForm />
     </div>
   );
 }

@@ -15,7 +15,7 @@ export const getCompanies = async () => {
 export const postCompany = async (
   name: string,
   address: string,
-  userId: [string]
+  userId: string[]
 ) => {
   const endpoint = `${apiUrl}/companies`;
 

@@ -466,6 +466,10 @@ h1 {
   flex-direction: column;
 }
 
+.item-input-list {
+  margin-top: 20px;
+}
+
 .List {
   display: flex;
   justify-content: space-between;
@@ -477,19 +481,12 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.List p {
+  cursor: pointer;
+}
+
 .fa-trash {
   margin-left: 0.75rem;
-}
-
-.incompleted {
-  color: #000;
-  cursor: pointer;
-}
-
-.completed {
-  color: #000;
-  text-decoration: line-through;
-  cursor: pointer;
 }
 
 .edit-icon,
